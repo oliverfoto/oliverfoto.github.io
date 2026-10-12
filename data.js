@@ -9,6 +9,8 @@
    Údaje o expozici: přidej k fotce  exif: "50 mm · f/2.8 · 1/200 s · ISO 100"
    a zobrazí se pod zvětšenou fotkou (v galerii i u projektů).
 
+   Model u projektu: přidej  model: { jmeno: "@nekdo", odkaz: "https://www.instagram.com/nekdo/" }
+
    Tip: fotky před nahráním zmenši na cca 2000 px na delší
    straně a ulož jako JPG (kvalita ~80 %), web pak bude rychlý.
    ========================================================= */
@@ -37,7 +39,9 @@ const GALERIE = [
   { soubor: "fotky/dny-nato-02.jpg", nazev: "Kouřová stopa",              kategorie: "reportaz", exif: "150 mm · f/11 · 1/500 s · ISO 100" },
   { soubor: "fotky/dny-nato-03.jpg", nazev: "Let na zádech",              kategorie: "reportaz", exif: "150 mm · f/9 · 1/320 s · ISO 100" },
   { soubor: "fotky/vitkovice-01.jpg", nazev: "Bolt Tower",                kategorie: "nocni",    exif: "70 mm · f/16 · 3,2 s · ISO 100" },
-  { soubor: "fotky/vitkovice-02.jpg", nazev: "Proměna barev",             kategorie: "nocni",    exif: "70 mm · f/16 · 3,2 s · ISO 100" }
+  { soubor: "fotky/vitkovice-02.jpg", nazev: "Proměna barev",             kategorie: "nocni",    exif: "70 mm · f/16 · 3,2 s · ISO 100" },
+  { soubor: "fotky/clovek-a-ocel-01.jpg", nazev: "Pod těžní věží",        kategorie: "portret",  exif: "28 mm · f/5 · 4 s · ISO 400" },
+  { soubor: "fotky/clovek-a-ocel-02.jpg", nazev: "Pod lampou",            kategorie: "portret",  exif: "150 mm · f/5,6 · 0,8 s · ISO 200" }
 ];
 
 // Projekty / školní zadání
@@ -61,6 +65,17 @@ const PROJEKTY = [
     fotky: [
       { soubor: "fotky/vitkovice-01.jpg", exif: "70 mm · f/16 · 3,2 s · ISO 100" },
       { soubor: "fotky/vitkovice-02.jpg", exif: "70 mm · f/16 · 3,2 s · ISO 100" }
+    ]
+  },
+  {
+    nazev: "Člověk a ocel",
+    datum: "19. září 2026",
+    model: { jmeno: "@nitrambohac", odkaz: "https://www.instagram.com/nitrambohac/" },
+    popis: "Portrétní pokus ze stejného večera v Dolní oblasti Vítkovic. Model stojí zády, aby nešlo o konkrétní tvář, ale o postavu: jednou malou a tichou proti obří ocelové konstrukci těžní věže dolu Hlubina, podruhé silnou a sebevědomou v kuželu pouliční lampy. Fotil jsem ze stativu s dlouhou expozicí jen při světle, které na místě bylo, takže model musel vydržet několik vteřin úplně bez hnutí. Černobílá verze podtrhuje tvrdost oceli a tmy, fialový nádech druhé fotky přidává noční, skoro filmovou atmosféru.",
+    technika: ["Olympus E-510", "Stativ", "Dlouhá expozice", "Dostupné světlo", "Portrét"],
+    fotky: [
+      { soubor: "fotky/clovek-a-ocel-01.jpg", exif: "28 mm · f/5 · 4 s · ISO 400" },
+      { soubor: "fotky/clovek-a-ocel-02.jpg", exif: "150 mm · f/5,6 · 0,8 s · ISO 200" }
     ]
   }
 ];

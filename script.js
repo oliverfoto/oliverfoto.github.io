@@ -63,6 +63,7 @@ function vykresliProjekty() {
         <span class="project-num">${cislo}</span>
         <h3>${p.nazev}</h3>
         <p class="project-date">${p.datum}</p>
+        ${p.model ? `<p class="project-model">Model: <a href="${p.model.odkaz}" target="_blank" rel="noopener">${p.model.jmeno}</a></p>` : ""}
         <p class="project-desc">${p.popis}</p>
         <ul class="project-tags">${p.technika.map(t => `<li>${t}</li>`).join("")}</ul>
       </div>

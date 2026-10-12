@@ -258,6 +258,12 @@ em { font-style: italic; }
   text-transform: uppercase;
   opacity: 0.7;
 }
+.project-model { margin-top: 10px; font-size: 0.9rem; opacity: 0.85; }
+.project-model a {
+  border-bottom: 1px solid rgba(245, 243, 238, 0.5);
+  transition: border-color 0.2s;
+}
+.project-model a:hover { border-color: var(--on-blue); }
 .project-desc { margin-top: 20px; opacity: 0.9; max-width: 42ch; }
 
 .project-tags {
