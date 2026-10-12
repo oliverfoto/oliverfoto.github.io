@@ -23,6 +23,7 @@ const UVODNI_FOTKA = {
 // (kategorie, ve které zatím není žádná fotka, se na webu nezobrazí)
 const KATEGORIE = [
   { id: "reportaz",  nazev: "Reportáž" },
+  { id: "nocni",     nazev: "Noční" },
   { id: "portret",   nazev: "Portrét" },
   { id: "krajina",   nazev: "Krajina" },
   { id: "produkt",   nazev: "Produkt" },
@@ -34,7 +35,9 @@ const KATEGORIE = [
 const GALERIE = [
   { soubor: "fotky/dny-nato-01.jpg", nazev: "Zásah speciálních jednotek", kategorie: "reportaz", exif: "137 mm · f/8 · 1/250 s · ISO 100" },
   { soubor: "fotky/dny-nato-02.jpg", nazev: "Kouřová stopa",              kategorie: "reportaz", exif: "150 mm · f/11 · 1/500 s · ISO 100" },
-  { soubor: "fotky/dny-nato-03.jpg", nazev: "Let na zádech",              kategorie: "reportaz", exif: "150 mm · f/9 · 1/320 s · ISO 100" }
+  { soubor: "fotky/dny-nato-03.jpg", nazev: "Let na zádech",              kategorie: "reportaz", exif: "150 mm · f/9 · 1/320 s · ISO 100" },
+  { soubor: "fotky/vitkovice-01.jpg", nazev: "Bolt Tower",                kategorie: "nocni",    exif: "70 mm · f/16 · 3,2 s · ISO 100" },
+  { soubor: "fotky/vitkovice-02.jpg", nazev: "Proměna barev",             kategorie: "nocni",    exif: "70 mm · f/16 · 3,2 s · ISO 100" }
 ];
 
 // Projekty / školní zadání
@@ -48,6 +51,16 @@ const PROJEKTY = [
       { soubor: "fotky/dny-nato-01.jpg", exif: "137 mm · f/8 · 1/250 s · ISO 100" },
       { soubor: "fotky/dny-nato-02.jpg", exif: "150 mm · f/11 · 1/500 s · ISO 100" },
       { soubor: "fotky/dny-nato-03.jpg", exif: "150 mm · f/9 · 1/320 s · ISO 100" }
+    ]
+  },
+  {
+    nazev: "Vítkovice po setmění",
+    datum: "19. září 2026",
+    popis: "Večerní pokus v Dolní oblasti Vítkovic, kam jsem se vydal po Dnech NATO. Hrál jsem si s dlouhou expozicí na Bolt Tower, nástavbě bývalé vysoké pece obtočené barevnými LED pásy. Světla se během několika vteřin přebarvují, takže dvě expozice stejného záběru pořízené krátce po sobě dopadly úplně jinak: jednou čistě modrá a červená, podruhé přechod z bílé do červené i se stopami pohybu. Spíš hra se světlem a časem než dokonalý snímek, ale přesně o to mi šlo.",
+    technika: ["Olympus E-510", "40–150 mm", "Dlouhá expozice", "Noční fotografie", "Experiment"],
+    fotky: [
+      { soubor: "fotky/vitkovice-01.jpg", exif: "70 mm · f/16 · 3,2 s · ISO 100" },
+      { soubor: "fotky/vitkovice-02.jpg", exif: "70 mm · f/16 · 3,2 s · ISO 100" }
     ]
   }
 ];

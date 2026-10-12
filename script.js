@@ -66,7 +66,7 @@ function vykresliProjekty() {
         <p class="project-desc">${p.popis}</p>
         <ul class="project-tags">${p.technika.map(t => `<li>${t}</li>`).join("")}</ul>
       </div>
-      <div class="project-photos">
+      <div class="project-photos" style="--sloupce: ${Math.min(fotky.length, 3)}">
         ${fotky.map((f, i) => `
           <button class="project-photo" data-i="${i}">
             <img src="${f.soubor}" alt="${p.nazev} — fotka ${i + 1}" loading="lazy">

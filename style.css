@@ -276,7 +276,7 @@ em { font-style: italic; }
 
 .project-photos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--sloupce, 3), 1fr);
   gap: 12px;
   align-items: start;
 }
@@ -384,6 +384,7 @@ em { font-style: italic; }
   .grid { columns: 1; }
   .tile-info { opacity: 1; transform: none; }  /* na mobilu není hover */
   .project-photos { grid-template-columns: 1fr 1fr; }
-  .project-photos .project-photo:first-child { grid-column: span 2; }
+  /* při lichém počtu fotek je první přes celou šířku */
+  .project-photos .project-photo:first-child:nth-last-child(odd) { grid-column: span 2; }
   .lb-prev, .lb-next { top: auto; bottom: 16px; transform: none; }
 }
