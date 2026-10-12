@@ -6,18 +6,23 @@
    2) Níže přepiš "soubor" na "fotky/portret-01.jpg"
    3) Vyplň "nazev" a "kategorie"
 
+   Údaje o expozici: přidej k fotce  exif: "50 mm · f/2.8 · 1/200 s · ISO 100"
+   a zobrazí se pod zvětšenou fotkou (v galerii i u projektů).
+
    Tip: fotky před nahráním zmenši na cca 2000 px na delší
    straně a ulož jako JPG (kvalita ~80 %), web pak bude rychlý.
    ========================================================= */
 
 // Úvodní velká fotka nahoře na stránce
 const UVODNI_FOTKA = {
-  soubor: "https://picsum.photos/seed/oliver-hero/1200/1500",
-  nazev: "Úvodní fotografie"
+  soubor: "fotky/dny-nato-02.jpg",
+  nazev: "Stíhací letoun s kouřovou stopou — Dny NATO 2026"
 };
 
 // Kategorie v galerii — "id" se píše k fotkám, "nazev" se zobrazí na webu
+// (kategorie, ve které zatím není žádná fotka, se na webu nezobrazí)
 const KATEGORIE = [
+  { id: "reportaz",  nazev: "Reportáž" },
   { id: "portret",   nazev: "Portrét" },
   { id: "krajina",   nazev: "Krajina" },
   { id: "produkt",   nazev: "Produkt" },
@@ -27,53 +32,22 @@ const KATEGORIE = [
 
 // Fotky v galerii
 const GALERIE = [
-  { soubor: "https://picsum.photos/seed/of-01/800/1000", nazev: "Portrét v okně",       kategorie: "portret" },
-  { soubor: "https://picsum.photos/seed/of-02/1000/700", nazev: "Ráno nad údolím",      kategorie: "krajina" },
-  { soubor: "https://picsum.photos/seed/of-03/800/800",  nazev: "Šálek",                kategorie: "produkt" },
-  { soubor: "https://picsum.photos/seed/of-04/800/1100", nazev: "Rembrandtovo světlo",  kategorie: "atelier" },
-  { soubor: "https://picsum.photos/seed/of-05/1000/750", nazev: "Ulice po dešti",       kategorie: "cernobila" },
-  { soubor: "https://picsum.photos/seed/of-06/800/1000", nazev: "Spolužačka",           kategorie: "portret" },
-  { soubor: "https://picsum.photos/seed/of-07/800/1050", nazev: "Les v mlze",           kategorie: "krajina" },
-  { soubor: "https://picsum.photos/seed/of-08/1000/700", nazev: "Hodinky na plátně",    kategorie: "produkt" },
-  { soubor: "https://picsum.photos/seed/of-09/800/1000", nazev: "Low key",              kategorie: "atelier" },
-  { soubor: "https://picsum.photos/seed/of-10/800/900",  nazev: "Stíny",                kategorie: "cernobila" },
-  { soubor: "https://picsum.photos/seed/of-11/1000/680", nazev: "Pole v létě",          kategorie: "krajina" },
-  { soubor: "https://picsum.photos/seed/of-12/800/1000", nazev: "Profil",               kategorie: "portret" }
+  { soubor: "fotky/dny-nato-01.jpg", nazev: "Zásah speciálních jednotek", kategorie: "reportaz", exif: "137 mm · f/8 · 1/250 s · ISO 100" },
+  { soubor: "fotky/dny-nato-02.jpg", nazev: "Kouřová stopa",              kategorie: "reportaz", exif: "150 mm · f/11 · 1/500 s · ISO 100" },
+  { soubor: "fotky/dny-nato-03.jpg", nazev: "Let na zádech",              kategorie: "reportaz", exif: "150 mm · f/9 · 1/320 s · ISO 100" }
 ];
 
 // Projekty / školní zadání
 const PROJEKTY = [
   {
-    nazev: "Portrét s jedním světlem",
-    datum: "Září 2026",
-    popis: "Zadání z ateliéru: vytvořit sérii portrétů pouze s jedním zdrojem světla a zkoumat, jak jeho pozice mění náladu fotografie.",
-    technika: ["Ateliér", "1× softbox", "85 mm", "f/2.8"],
+    nazev: "Dny NATO 2026",
+    datum: "19. září 2026",
+    popis: "Reportáž z letošního ročníku Dnů NATO v Ostravě, jedné z největších přehlídek armády, policie a záchranných složek v Evropě. Zachytil jsem dynamickou ukázku zásahu policejních speciálních jednotek s obrněnou technikou a pyrotechnikou i akrobacii stíhacích letounů nad letištěm. Největší výzvou bylo udržet ostrost u strojů v rychlém pohybu a trefit ten správný okamžik.",
+    technika: ["Olympus E-510", "40–150 mm", "Reportáž", "Denní světlo"],
     fotky: [
-      "https://picsum.photos/seed/pr1-a/800/1000",
-      "https://picsum.photos/seed/pr1-b/800/1000",
-      "https://picsum.photos/seed/pr1-c/800/1000"
-    ]
-  },
-  {
-    nazev: "Město v černobílé",
-    datum: "Říjen 2026",
-    popis: "Street fotografie v ulicích města. Cílem bylo pracovat s kontrastem, linkami a geometrií bez rozptylující barvy.",
-    technika: ["Exteriér", "35 mm", "Černobílá konverze"],
-    fotky: [
-      "https://picsum.photos/seed/pr2-a/1000/750",
-      "https://picsum.photos/seed/pr2-b/1000/750",
-      "https://picsum.photos/seed/pr2-c/1000/750"
-    ]
-  },
-  {
-    nazev: "Produktová fotografie",
-    datum: "Listopad 2026",
-    popis: "Fotografie produktu na bílém pozadí pro e-shop. Důraz na čisté pozadí, ostrost a správné podání barev.",
-    technika: ["Ateliér", "Světelný stan", "100 mm makro", "f/11"],
-    fotky: [
-      "https://picsum.photos/seed/pr3-a/800/800",
-      "https://picsum.photos/seed/pr3-b/800/800",
-      "https://picsum.photos/seed/pr3-c/800/800"
+      { soubor: "fotky/dny-nato-01.jpg", exif: "137 mm · f/8 · 1/250 s · ISO 100" },
+      { soubor: "fotky/dny-nato-02.jpg", exif: "150 mm · f/11 · 1/500 s · ISO 100" },
+      { soubor: "fotky/dny-nato-03.jpg", exif: "150 mm · f/9 · 1/320 s · ISO 100" }
     ]
   }
 ];

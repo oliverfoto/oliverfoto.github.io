@@ -26,13 +26,15 @@ function vykresliGalerii(kategorie) {
         <span class="tile-cat">${nazevKategorie(foto.kategorie)}</span>
       </span>`;
     btn.addEventListener("click", () =>
-      otevritLightbox(fotky.map(f => ({ src: f.soubor, popis: f.nazev })), i));
+      otevritLightbox(fotky.map(f => ({ src: f.soubor, popis: f.nazev, exif: f.exif })), i));
     grid.appendChild(btn);
   });
 }
 
 function vytvorFiltry() {
-  const vse = [{ id: "vse", nazev: "Vše" }, ...KATEGORIE];
+  // kategorie bez fotek se nezobrazí
+  const pouzite = KATEGORIE.filter(k => GALERIE.some(f => f.kategorie === k.id));
+  const vse = [{ id: "vse", nazev: "Vše" }, ...pouzite];
   vse.forEach(k => {
     const b = document.createElement("button");
     b.className = "filter";
@@ -54,6 +56,8 @@ function vykresliProjekty() {
     const el = document.createElement("article");
     el.className = "project";
     const cislo = String(idx + 1).padStart(2, "0");
+    // fotka může být jen cesta ("fotky/x.jpg") nebo objekt { soubor, exif }
+    const fotky = p.fotky.map(f => (typeof f === "string" ? { soubor: f } : f));
     el.innerHTML = `
       <div class="project-meta">
         <span class="project-num">${cislo}</span>
@@ -63,12 +67,12 @@ function vykresliProjekty() {
         <ul class="project-tags">${p.technika.map(t => `<li>${t}</li>`).join("")}</ul>
       </div>
       <div class="project-photos">
-        ${p.fotky.map((src, i) => `
+        ${fotky.map((f, i) => `
           <button class="project-photo" data-i="${i}">
-            <img src="${src}" alt="${p.nazev} — fotka ${i + 1}" loading="lazy">
+            <img src="${f.soubor}" alt="${p.nazev} — fotka ${i + 1}" loading="lazy">
           </button>`).join("")}
       </div>`;
-    const sada = p.fotky.map((src, i) => ({ src, popis: `${p.nazev} · ${i + 1}/${p.fotky.length}` }));
+    const sada = fotky.map((f, i) => ({ src: f.soubor, popis: `${p.nazev} · ${i + 1}/${fotky.length}`, exif: f.exif }));
     el.querySelectorAll(".project-photo").forEach(b =>
       b.addEventListener("click", () => otevritLightbox(sada, Number(b.dataset.i))));
     projectsEl.appendChild(el);
@@ -79,6 +83,7 @@ function vykresliProjekty() {
 const lb = document.getElementById("lightbox");
 const lbImg = document.getElementById("lb-img");
 const lbCaption = document.getElementById("lb-caption");
+const lbExif = document.getElementById("lb-exif");
 let sadaFotek = [];
 let aktualni = 0;
 
@@ -87,6 +92,8 @@ function ukazFotku() {
   lbImg.src = f.src;
   lbImg.alt = f.popis;
   lbCaption.textContent = f.popis;
+  lbExif.textContent = f.exif || "";
+  lbExif.hidden = !f.exif;
 }
 
 function otevritLightbox(sada, index) {
