@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oliverovo Foto — portfolio</title>
+  <meta name="description" content="Fotografické portfolio — obor Fotograf, střední škola.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top">
+    <a href="#" class="logo">Oliverovo <em>Foto</em></a>
+    <nav class="nav">
+      <a href="#galerie">Galerie</a>
+      <a href="#projekty">Projekty</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ÚVOD -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Portfolio · Obor Fotograf</p>
+        <h1>Oliverovo<br><em>Foto</em></h1>
+        <p class="hero-lead">Světlo, kompozice a okamžiky, které stojí za zastavení. Výběr mé práce ze studia oboru Fotograf.</p>
+        <a href="#galerie" class="hero-link">Prohlédnout galerii <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-photo">
+        <img id="hero-img" src="" alt="">
+      </figure>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie" class="section">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>Galerie</h2>
+      </div>
+
+      <div class="filters" id="filters" role="tablist" aria-label="Kategorie fotek"></div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- PROJEKTY -->
+    <section id="projekty" class="section section-blue">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Projekty <em>&amp; zadání</em></h2>
+      </div>
+
+      <div class="projects" id="projects"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Oliverovo Foto</span>
+    <a href="#">Nahoru ↑</a>
+  </footer>
+
+  <!-- ZVĚTŠENÍ FOTKY -->
+  <dialog class="lightbox" id="lightbox" aria-label="Zvětšená fotografie">
+    <button class="lb-btn lb-close" id="lb-close" aria-label="Zavřít">✕</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="Předchozí">←</button>
+    <figure class="lb-figure">
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-caption"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" id="lb-next" aria-label="Další">→</button>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+/* =========================================================
+   BARVY — chceš jiný odstín? Změň hodnoty tady nahoře.
+   ========================================================= */
+:root {
+  --paper: #f5f3ee;       /* pozadí */
+  --ink: #121418;         /* text */
+  --muted: #6b6e75;       /* šedý text */
+  --line: rgba(18, 20, 24, 0.12);
+  --blue: #0f4c81;        /* Classic Blue */
+  --blue-deep: #0b3a63;
+  --on-blue: #f5f3ee;
+
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --pad: clamp(16px, 4vw, 56px);
+  --max: 1400px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; width: 100%; height: auto; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+em { font-style: italic; }
+
+/* ---------- Záhlaví ---------- */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px var(--pad);
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.logo em { color: var(--blue); }
+
+.nav { display: flex; gap: clamp(16px, 3vw, 36px); }
+.nav a {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 1px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav a:hover::after { transform: scaleX(1); }
+
+/* ---------- Úvod ---------- */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 110px) var(--pad);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: end;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(4rem, 12vw, 10.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}
+.hero h1 em { color: var(--blue); }
+
+.hero-lead {
+  max-width: 38ch;
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-link {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 36px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-link:hover { color: var(--blue); border-color: var(--blue); }
+
+.hero-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--line);
+}
+.hero-photo img { height: 100%; object-fit: cover; }
+
+/* ---------- Sekce ---------- */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(56px, 9vw, 120px) var(--pad);
+  scroll-margin-top: 20px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.section-num {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+}
+.section-head h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1;
+}
+
+/* ---------- Filtry ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.filter {
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.filter:hover { border-color: var(--ink); }
+.filter[aria-selected="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--on-blue);
+}
+
+/* ---------- Mřížka fotek (masonry) ---------- */
+.grid {
+  columns: 3;
+  column-gap: 16px;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  overflow: hidden;
+  break-inside: avoid;
+  background: var(--line);
+  animation: fadeUp 0.5s ease both;
+}
+.tile img { transition: transform 0.6s ease; }
+.tile:hover img { transform: scale(1.03); }
+
+.tile-info {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 40px 16px 14px;
+  background: linear-gradient(to top, rgba(11, 58, 99, 0.85), transparent);
+  color: var(--on-blue);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.tile:hover .tile-info,
+.tile:focus-visible .tile-info { opacity: 1; transform: none; }
+.tile-title { font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; }
+.tile-cat { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Projekty (modrá sekce) ---------- */
+.section-blue {
+  max-width: none;
+  background: var(--blue);
+  color: var(--on-blue);
+}
+.section-blue > * { max-width: calc(var(--max) - 2 * var(--pad)); margin-left: auto; margin-right: auto; }
+.section-blue .section-head { border-color: rgba(245, 243, 238, 0.25); }
+.section-blue .section-num { color: var(--on-blue); opacity: 0.7; }
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) 2fr;
+  gap: clamp(24px, 5vw, 72px);
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(245, 243, 238, 0.25);
+}
+.project:first-child { padding-top: 12px; }
+.project:last-child { border-bottom: 0; }
+
+.project-num { font-size: 0.8rem; letter-spacing: 0.1em; opacity: 0.7; }
+.project h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.05;
+  margin: 10px 0 6px;
+}
+.project-date {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.project-desc { margin-top: 20px; opacity: 0.9; max-width: 42ch; }
+
+.project-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 22px;
+}
+.project-tags li {
+  padding: 4px 12px;
+  border: 1px solid rgba(245, 243, 238, 0.35);
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.project-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.project-photo {
+  overflow: hidden;
+  background: var(--blue-deep);
+}
+.project-photo img { transition: transform 0.6s ease, opacity 0.3s; }
+.project-photo:hover img { transform: scale(1.04); }
+
+/* ---------- Patička ---------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 28px var(--pad);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.footer a:hover { color: var(--blue); }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0;
+  background: #0d0f12;
+  color: var(--on-blue);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox[open] { display: flex; animation: fadeIn 0.25s ease; }
+.lightbox::backdrop { background: #0d0f12; }
+
+.lb-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: min(90vw, 1400px);
+}
+.lb-figure img {
+  width: auto;
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+}
+.lb-figure figcaption {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.lb-btn {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: var(--on-blue);
+  transition: background 0.2s;
+}
+.lb-btn:hover { background: var(--blue); }
+.lb-close { top: 16px; right: 16px; }
+.lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Přístupnost ---------- */
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.section-blue :focus-visible { outline-color: var(--on-blue); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; align-items: start; }
+  .hero-photo { aspect-ratio: 4 / 3; }
+  .grid { columns: 2; }
+  .project { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 560px) {
+  .logo { font-size: 1.35rem; }
+  .grid { columns: 1; }
+  .tile-info { opacity: 1; transform: none; }  /* na mobilu není hover */
+  .project-photos { grid-template-columns: 1fr 1fr; }
+  .project-photos .project-photo:first-child { grid-column: span 2; }
+  .lb-prev, .lb-next { top: auto; bottom: 16px; transform: none; }
+}

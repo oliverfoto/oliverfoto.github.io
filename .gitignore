@@ -1,0 +1,5 @@
+# Soubory, které se na GitHub nenahrávají
+.claude/
+Thumbs.db
+desktop.ini
+.DS_Store
